@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./db";
 import bodyParser from "body-parser";
 import authRoutes from "../routes/authRoutes";
+import taskRoutes from "../routes/taskRoutes";
 
 import cors from "cors";
 
@@ -25,6 +26,7 @@ connectDB(process.env.MONGO_URI).then(() => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api", taskRoutes);
 
 app.get("/", (req: any, res: any) => {
   res.send("Hello, World!");
